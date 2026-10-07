@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "image_banner": {
@@ -6,23 +15,16 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Ochrona i zasilanie dla Twojego telefonu.",
+            "heading": "Browse our latest products",
             "heading_size": "h0"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "Etui, szkła ochronne, ładowarki i powerbanki sprawdzonych marek. Wysyłka w 2–4 dni robocze.",
-            "text_style": "body"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Zobacz produkty",
+            "button_label_1": "Shop all",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
+            "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
@@ -31,221 +33,53 @@
       },
       "block_order": [
         "heading",
-        "text",
         "button"
       ],
       "settings": {
         "image": "shopify://shop_images/kng-baner-glowny.jpg",
-        "image_overlay_opacity": 20,
-        "image_height": "medium",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
+        "image_overlay_opacity": 40,
+        "image_height": "large",
         "image_behavior": "none",
-        "desktop_content_alignment": "left",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
         "color_scheme": "scheme-3",
-        "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
-        "show_text_below": true
-      }
-    },
-    "trust_bar": {
-      "type": "trust-bar",
-      "blocks": {
-        "blik": {
-          "type": "item",
-          "settings": {
-            "icon": "lightning_bolt",
-            "heading": "BLIK",
-            "text": "Szybka płatność telefonem"
-          }
-        },
-        "inpost": {
-          "type": "item",
-          "settings": {
-            "icon": "map_pin",
-            "heading": "InPost Paczkomaty",
-            "text": "Odbiór 24/7 w paczkomacie"
-          }
-        },
-        "zwrot": {
-          "type": "item",
-          "settings": {
-            "icon": "return",
-            "heading": "14 dni na zwrot",
-            "text": "Bez podawania przyczyny"
-          }
-        },
-        "platnosci": {
-          "type": "item",
-          "settings": {
-            "icon": "lock",
-            "heading": "Bezpieczne płatności",
-            "text": "Szyfrowane połączenie"
-          }
-        }
-      },
-      "block_order": [
-        "blik",
-        "inpost",
-        "zwrot",
-        "platnosci"
-      ],
-      "settings": {
-        "title": "",
-        "heading_size": "h2",
-        "color_scheme": "scheme-2",
-        "padding_top": 20,
-        "padding_bottom": 20
-      }
-    },
-    "categories": {
-      "type": "collection-list",
-      "blocks": {
-        "cat_0": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "etui"
-          }
-        },
-        "cat_1": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "szkla-ochronne"
-          }
-        },
-        "cat_2": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "ladowarki"
-          }
-        },
-        "cat_3": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "kable"
-          }
-        },
-        "cat_4": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "powerbanki"
-          }
-        },
-        "cat_5": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "uchwyty"
-          }
-        }
-      },
-      "block_order": [
-        "cat_0",
-        "cat_1",
-        "cat_2",
-        "cat_3",
-        "cat_4",
-        "cat_5"
-      ],
-      "settings": {
-        "title": "Kategorie",
-        "heading_size": "h1",
-        "image_ratio": "square",
-        "columns_desktop": 6,
-        "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 48,
-        "padding_bottom": 24
+        "mobile_content_alignment": "center",
+        "show_text_below": false
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Polecane produkty",
-        "heading_size": "h1",
+        "collection": "all",
+        "products_to_show": 8,
+        "title": "Featured products",
+        "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "polecane",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "square",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
-        "show_vendor": true,
+        "show_vendor": false,
         "show_rating": false,
-        "quick_add": "standard",
+        "quick_add": "none",
         "columns_mobile": "2",
-        "padding_top": 24,
-        "padding_bottom": 48
-      }
-    },
-    "brands": {
-      "type": "multicolumn",
-      "blocks": {
-        "spigen": {
-          "type": "column",
-          "settings": {
-            "title": "Spigen",
-            "text": "<p>Etui i szkła ochronne</p>",
-            "link_label": "Zobacz produkty",
-            "link": "/collections/vendors?q=Spigen"
-          }
-        },
-        "baseus": {
-          "type": "column",
-          "settings": {
-            "title": "Baseus",
-            "text": "<p>Ładowarki, kable i powerbanki</p>",
-            "link_label": "Zobacz produkty",
-            "link": "/collections/vendors?q=Baseus"
-          }
-        },
-        "tech_protect": {
-          "type": "column",
-          "settings": {
-            "title": "Tech-Protect",
-            "text": "<p>Etui, szkła i uchwyty</p>",
-            "link_label": "Zobacz produkty",
-            "link": "/collections/vendors?q=Tech-Protect"
-          }
-        }
-      },
-      "block_order": [
-        "spigen",
-        "baseus",
-        "tech_protect"
-      ],
-      "settings": {
-        "title": "Nasze marki",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "primary",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 48,
-        "padding_bottom": 48
+        "padding_top": 44,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
     "image_banner",
-    "trust_bar",
-    "categories",
-    "featured_collection",
-    "brands"
+    "featured_collection"
   ]
 }
