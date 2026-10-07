@@ -35,7 +35,8 @@
         "button"
       ],
       "settings": {
-        "image_overlay_opacity": 50,
+        "image": "shopify://shop_images/kng-baner-glowny.jpg",
+        "image_overlay_opacity": 20,
         "image_height": "medium",
         "desktop_content_position": "middle-left",
         "show_text_box": false,
@@ -44,7 +45,7 @@
         "color_scheme": "scheme-3",
         "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
-        "show_text_below": false
+        "show_text_below": true
       }
     },
     "trust_bar": {
