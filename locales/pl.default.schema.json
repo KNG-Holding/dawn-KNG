@@ -2269,7 +2269,7 @@
       }
     },
     "newsletter": {
-      "name": "Osoba zarejestrowana w celu otrzymywania e-maili",
+      "name": "Zapis do newslettera",
       "settings": {
         "full_width": {
           "label": "Pełna szerokość"
@@ -2302,7 +2302,7 @@
         }
       },
       "presets": {
-        "name": "Osoba zarejestrowana w celu otrzymywania e-maili"
+        "name": "Zapis do newslettera"
       }
     },
     "page": {
@@ -2637,7 +2637,7 @@
       }
     },
     "email-signup-banner": {
-      "name": "Baner rejestracji w celu otrzymywania e-maili",
+      "name": "Baner z zapisem na e-mail",
       "settings": {
         "paragraph": {
           "content": "Rejestracje dodają [profile klienta](https://help.shopify.com/manual/customers/manage-customers)"
@@ -2769,7 +2769,7 @@
         }
       },
       "presets": {
-        "name": "Baner rejestracji w celu otrzymywania e-maili"
+        "name": "Baner z zapisem na e-mail"
       }
     },
     "slideshow": {

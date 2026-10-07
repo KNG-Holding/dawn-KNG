@@ -1,0 +1,154 @@
+{{ 'section-trust-bar.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="trust-bar color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- if section.settings.title != blank -%}
+      <h2 class="trust-bar__title {{ section.settings.heading_size }} inline-richtext">
+        {{- section.settings.title -}}
+      </h2>
+    {%- endif -%}
+    <ul class="trust-bar__list list-unstyled" role="list">
+      {%- for block in section.blocks -%}
+        <li class="trust-bar__item" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != 'none' -%}
+            <span class="trust-bar__icon" aria-hidden="true">
+              {%- render 'icon-accordion', icon: block.settings.icon -%}
+            </span>
+          {%- endif -%}
+          <span class="trust-bar__text">
+            <span class="trust-bar__heading inline-richtext">{{ block.settings.heading }}</span>
+            {%- if block.settings.text != blank -%}
+              <span class="trust-bar__subtext">{{ block.settings.text }}</span>
+            {%- endif -%}
+          </span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pasek zaufania",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Nagłówek",
+      "default": ""
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Mały" },
+        { "value": "h1", "label": "Średni" },
+        { "value": "h0", "label": "Duży" }
+      ],
+      "default": "h2",
+      "label": "Rozmiar nagłówka"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Schemat kolorów",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "Odstępy"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Górny odstęp",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Dolny odstęp",
+      "default": 28
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Element",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Ikona",
+          "default": "check_mark",
+          "options": [
+            { "value": "none", "label": "Brak" },
+            { "value": "box", "label": "Paczka" },
+            { "value": "chat_bubble", "label": "Dymek czatu" },
+            { "value": "check_mark", "label": "Znacznik wyboru" },
+            { "value": "lightning_bolt", "label": "Błyskawica" },
+            { "value": "lock", "label": "Kłódka" },
+            { "value": "map_pin", "label": "Pinezka na mapie" },
+            { "value": "plane", "label": "Samolot" },
+            { "value": "price_tag", "label": "Metka z ceną" },
+            { "value": "question_mark", "label": "Znak zapytania" },
+            { "value": "return", "label": "Zwrot" },
+            { "value": "stopwatch", "label": "Stoper" },
+            { "value": "truck", "label": "Ciężarówka" }
+          ]
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Nagłówek",
+          "default": "Bezpieczne płatności"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Opis"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pasek zaufania",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "lightning_bolt", "heading": "BLIK" } },
+        { "type": "item", "settings": { "icon": "map_pin", "heading": "InPost Paczkomaty" } },
+        { "type": "item", "settings": { "icon": "return", "heading": "14 dni na zwrot" } },
+        { "type": "item", "settings": { "icon": "lock", "heading": "Bezpieczne płatności" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
