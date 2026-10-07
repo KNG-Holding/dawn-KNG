@@ -1,0 +1,50 @@
+/* KNG-Mobile – nadpisania stylu motywu (kolor akcentu = kolor przycisku w schemacie kolorów) */
+
+/* Ceny w kolorze akcentu */
+.price .price-item {
+  color: rgb(var(--color-button));
+  font-weight: var(--font-body-weight-bold);
+}
+
+.price.price--on-sale .price-item--regular {
+  color: rgba(var(--color-foreground), 0.6);
+  font-weight: var(--font-body-weight);
+}
+
+/* Linki w treści w kolorze akcentu (jasne schematy) */
+:is(.color-scheme-1, .color-scheme-2) .rte a,
+:is(.color-scheme-1, .color-scheme-2) .underlined-link {
+  color: rgb(var(--color-button));
+  text-decoration-color: rgba(var(--color-button), 0.4);
+}
+
+/* Przyciski – nowocześniejszy krój */
+.button,
+.shopify-challenge__button,
+.customer button {
+  letter-spacing: 0.02rem;
+  font-weight: var(--font-body-weight-bold);
+}
+
+/* Karta produktu – komunikat o wysyłce pod ceną */
+.product__info-container .icon-with-text {
+  margin: 1.2rem 0 1.6rem;
+}
+
+.product__info-container .icon-with-text .svg-wrapper {
+  fill: rgb(var(--color-button));
+}
+
+.product__info-container .icon-with-text .h4 {
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+  font-weight: var(--font-body-weight-bold);
+}
+
+/* Karta produktu – duży przycisk „Dodaj do koszyka” na telefonie */
+@media screen and (max-width: 749px) {
+  .product-form__submit {
+    min-height: 5.6rem;
+    font-size: 1.7rem;
+  }
+}

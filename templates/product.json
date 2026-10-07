@@ -39,7 +39,35 @@
         "share": {
           "type": "share",
           "settings": {
-            "share_label": "Share"
+            "share_label": "Udostępnij"
+          }
+        },
+        "shipping_info": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "vertical",
+            "icon_1": "truck",
+            "heading_1": "Wysyłka w 2–4 dni robocze",
+            "icon_2": "none",
+            "heading_2": "",
+            "icon_3": "none",
+            "heading_3": ""
+          }
+        },
+        "delivery": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Dostawa",
+            "icon": "truck",
+            "content": "<p>Zamówienia wysyłamy w ciągu <strong>2–4 dni roboczych</strong>. Dostarczamy przez InPost (Paczkomaty i kurier). Koszt dostawy zobaczysz przy składaniu zamówienia.</p><p><a href=\"/policies/shipping-policy\" title=\"Dostawa\">Szczegóły dostawy</a></p>"
+          }
+        },
+        "returns": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Zwroty",
+            "icon": "return",
+            "content": "<p>Masz <strong>14 dni</strong> na odstąpienie od umowy bez podawania przyczyny, licząc od dnia otrzymania przesyłki.</p><p><a href=\"/policies/refund-policy\" title=\"Zwroty\">Zasady zwrotów</a></p>"
           }
         }
       },
@@ -47,10 +75,13 @@
         "vendor",
         "title",
         "price",
+        "shipping_info",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "description",
+        "delivery",
+        "returns",
         "share"
       ],
       "settings": {
@@ -79,7 +110,7 @@
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "You may also like",
+        "heading": "Może Ci się spodobać",
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,

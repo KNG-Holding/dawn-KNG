@@ -4,21 +4,47 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "company": {
+          "type": "text",
+          "settings": {
+            "heading": "KNG-Holding",
+            "subtext": "<p>KNG-Mobile – akcesoria GSM: etui, szkła ochronne, ładowarki, kable, powerbanki i uchwyty.</p><p>Adres: [DO UZUPEŁNIENIA]<br/>NIP: [DO UZUPEŁNIENIA]<br/>E-mail: [DO UZUPEŁNIENIA]</p>"
+          }
+        },
+        "info": {
+          "type": "text",
+          "settings": {
+            "heading": "Informacje",
+            "subtext": "<p><a href=\"/policies/terms-of-service\" title=\"Regulamin\">Regulamin</a><br/><a href=\"/policies/privacy-policy\" title=\"Polityka prywatności\">Polityka prywatności</a><br/><a href=\"/policies/shipping-policy\" title=\"Dostawa\">Dostawa</a><br/><a href=\"/policies/refund-policy\" title=\"Zwroty\">Zwroty</a></p>"
+          }
+        },
+        "shop": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Sklep",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "company",
+        "info",
+        "shop"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-3",
         "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
+        "newsletter_heading": "Zapisz się do newslettera",
+        "enable_follow_on_shop": false,
         "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "payment_enable": true,
-        "show_policy": true,
+        "show_policy": false,
         "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 48,
+        "padding_bottom": 32
       }
     }
   },
