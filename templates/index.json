@@ -54,7 +54,7 @@
       "settings": {
         "collection": "all",
         "products_to_show": 8,
-        "title": "Featured products",
+        "title": "Nowości w sklepie",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
@@ -76,10 +76,318 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "trust_bar": {
+      "type": "trust-bar",
+      "blocks": {
+        "a": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "heading": "Wysyłka w 2–4 dni",
+            "text": "Paczkomaty InPost i kurier"
+          }
+        },
+        "b": {
+          "type": "item",
+          "settings": {
+            "icon": "lightning_bolt",
+            "heading": "BLIK i szybkie płatności",
+            "text": "Bezpieczne zakupy online"
+          }
+        },
+        "c": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "heading": "14 dni na zwrot",
+            "text": "Bez podawania przyczyny"
+          }
+        },
+        "d": {
+          "type": "item",
+          "settings": {
+            "icon": "lock",
+            "heading": "Oryginalne produkty",
+            "text": "Sprawdzone marki i licencje"
+          }
+        }
+      },
+      "block_order": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h3",
+        "color_scheme": "scheme-2",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "c0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "etui-na-telefon"
+          }
+        },
+        "c1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "szkla-i-folie-ochronne"
+          }
+        },
+        "c2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "ladowarki-do-telefonu"
+          }
+        },
+        "c3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kable-usb"
+          }
+        },
+        "c4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "powerbanki-do-telefonu"
+          }
+        },
+        "c5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "uchwyty-do-telefonu"
+          }
+        },
+        "c6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "smartwatche-i-opaski"
+          }
+        },
+        "c7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "audio"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7"
+      ],
+      "settings": {
+        "title": "Kategorie",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "models": {
+      "type": "collection-list",
+      "blocks": {
+        "c0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "etui-iphone-17-pro-max"
+          }
+        },
+        "c1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "etui-iphone-17-pro"
+          }
+        },
+        "c2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "etui-iphone-17"
+          }
+        },
+        "c3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "etui-iphone-air"
+          }
+        },
+        "c4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "etui-iphone-16-pro"
+          }
+        },
+        "c5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "etui-galaxy-s25-ultra"
+          }
+        },
+        "c6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "etui-galaxy-s26-ultra"
+          }
+        },
+        "c7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "etui-galaxy-a56"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7"
+      ],
+      "settings": {
+        "title": "Popularne modele telefonów",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "deals": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "akcesoria-uniwersalne",
+        "products_to_show": 8,
+        "title": "Dobre ceny – akcesoria uniwersalne",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "brands": {
+      "type": "collection-list",
+      "blocks": {
+        "c0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "marka-spigen"
+          }
+        },
+        "c1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "marka-3mk-protection"
+          }
+        },
+        "c2": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "marka-tech-protect"
+          }
+        },
+        "c3": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "marka-baseus"
+          }
+        },
+        "c4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "marka-ugreen"
+          }
+        },
+        "c5": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "marka-ringke"
+          }
+        },
+        "c6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "marka-guess"
+          }
+        },
+        "c7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "marka-karl-lagerfeld"
+          }
+        }
+      },
+      "block_order": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7"
+      ],
+      "settings": {
+        "title": "Popularne marki",
+        "heading_size": "h2",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "trust_bar",
+    "categories",
+    "models",
+    "featured_collection",
+    "brands",
+    "deals"
   ]
 }
