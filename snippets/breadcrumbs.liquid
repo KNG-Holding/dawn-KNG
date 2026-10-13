@@ -1,0 +1,81 @@
+{% comment %}
+  Okruszki nawigacyjne + dane strukturalne BreadcrumbList.
+  Produkt: Strona główna › kolekcja (z adresu albo dział wg typu produktu) › produkt.
+  Kolekcja: Strona główna › kolekcja.
+{% endcomment %}
+{%- liquid
+  assign crumb_collection = nil
+  if template.name == 'product'
+    if collection
+      assign crumb_collection = collection
+    else
+      for c in product.collections
+        if c.title == product.type
+          assign crumb_collection = c
+          break
+        endif
+      endfor
+    endif
+  endif
+-%}
+{%- if template.name == 'product' or template.name == 'collection' -%}
+  <nav class="breadcrumbs page-width" aria-label="Okruszki nawigacyjne">
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item"><a href="{{ routes.root_url }}">Strona główna</a></li>
+      {%- if template.name == 'product' -%}
+        {%- if crumb_collection -%}
+          <li class="breadcrumbs__item"><a href="{{ crumb_collection.url }}">{{ crumb_collection.title | escape }}</a></li>
+        {%- endif -%}
+        <li class="breadcrumbs__item" aria-current="page">{{ product.title | escape }}</li>
+      {%- else -%}
+        <li class="breadcrumbs__item" aria-current="page">{{ collection.title | escape }}</li>
+      {%- endif -%}
+    </ol>
+  </nav>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Strona główna",
+          "item": {{ shop.url | append: routes.root_url | json }}
+        },
+        {%- if template.name == 'product' -%}
+          {%- if crumb_collection -%}
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": {{ crumb_collection.title | json }},
+              "item": {{ shop.url | append: crumb_collection.url | json }}
+            },
+          {%- endif -%}
+          {
+            "@type": "ListItem",
+            "position": {% if crumb_collection %}3{% else %}2{% endif %},
+            "name": {{ product.title | json }},
+            "item": {{ shop.url | append: product.url | json }}
+          }
+        {%- else -%}
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ collection.title | json }},
+            "item": {{ shop.url | append: collection.url | json }}
+          }
+        {%- endif -%}
+      ]
+    }
+  </script>
+  <style>
+    .breadcrumbs { padding-top: 1.2rem; font-size: 1.3rem; }
+    .breadcrumbs__list { display: flex; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+    .breadcrumbs__item { color: rgba(var(--color-foreground), 0.75); }
+    .breadcrumbs__item:not(:last-child)::after { content: '›'; margin: 0 0.6rem; }
+    .breadcrumbs__item a { color: rgb(var(--color-foreground)); text-decoration: none; }
+    .breadcrumbs__item a:hover { text-decoration: underline; }
+    .breadcrumbs__item[aria-current='page'] { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 60ch; }
+  </style>
+{%- endif -%}

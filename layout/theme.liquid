@@ -26,6 +26,18 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
+    {%- liquid
+      assign kng_noindex = false
+      if template.name == 'search' or current_tags
+        assign kng_noindex = true
+      elsif template.name == 'collection' and collection.all_products_count < 3
+        assign kng_noindex = true
+      endif
+    -%}
+    {%- if kng_noindex -%}
+      <meta name="robots" content="noindex, follow">
+    {%- endif -%}
+
     {% render 'meta-tags' %}
 
     <script type="module">
@@ -340,6 +352,7 @@
       tabindex="-1"
       data-template="{{ template.name }}"
     >
+      {%- render 'breadcrumbs' -%}
       {{ content_for_layout }}
     </main>
 
