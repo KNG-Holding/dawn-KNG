@@ -11,6 +11,7 @@
   "current": {
     "logo": "shopify://shop_images/podglad-v2-jasne.png",
     "logo_width": 180,
+    "favicon": "shopify://shop_images/kng-mobile-ikona-v2.png",
     "type_header_font": "inter_n7",
     "heading_scale": 110,
     "type_body_font": "inter_n4",
