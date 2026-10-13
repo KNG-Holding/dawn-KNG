@@ -195,8 +195,23 @@
                 {%- when 'description' -%}
                   {%- if product.description != blank -%}
                     <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                      {{ product.description | replace: '<h1', '<h2' | replace: '</h1>', '</h2>' }}
+                      {{-
+                        product.description
+                        | replace: '<h1', '<h2'
+                        | replace: '</h1>', '</h2>'
+                        | replace: '<img ', '<img loading="lazy" decoding="async" '
+                        | replace: 'alt="TUTI ALT"', 'alt=""'
+                        | replace: 'alt="#"', 'alt=""'
+                      -}}
                     </div>
+                    <style>
+                      .product__description .descr-imgs-hidden,
+                      .product__description img[src='#'],
+                      .product__description img[src^='chrome-extension'] {
+                        display: none;
+                      }
+                      .product__description img { max-width: 100%; height: auto; }
+                    </style>
                   {%- endif -%}
                 {%- when 'sku' -%}
                   <p
