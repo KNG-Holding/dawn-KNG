@@ -20,6 +20,7 @@
       {%- if section.settings.show_collection_description -%}
         <div class="collection-hero__description rte">{{ collection.description }}</div>
       {%- endif -%}
+      {%- render 'collection-model-pair', collection: collection -%}
     </div>
 
     {%- if section.settings.show_collection_image and collection.image -%}
