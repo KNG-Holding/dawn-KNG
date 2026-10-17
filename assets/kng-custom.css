@@ -48,3 +48,29 @@
     font-size: 1.7rem;
   }
 }
+
+/* Kolekcje modeli – link do kolekcji-pary (etui ↔ szkła) */
+.collection-model-pair {
+  margin: 1.2rem 0 0;
+}
+
+.collection-model-pair__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 4.4rem;
+  padding: 0.8rem 1.6rem;
+  border: 0.1rem solid rgba(var(--color-button), 0.4);
+  border-radius: var(--buttons-radius-outset);
+  color: rgb(var(--color-button));
+  font-weight: var(--font-body-weight-bold);
+  text-decoration: none;
+}
+
+.collection-model-pair__link::after {
+  content: '→';
+  margin-left: 0.8rem;
+}
+
+.collection-model-pair__link:hover {
+  background: rgba(var(--color-button), 0.06);
+}

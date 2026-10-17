@@ -1,0 +1,34 @@
+{% comment %}
+  Link do kolekcji-pary tego samego modelu: etui-<model> ↔ szkla-<model>.
+  Pokazywany tylko, gdy para istnieje, nie jest ukryta (seo.hidden)
+  i ma co najmniej 3 produkty (mniej = noindex, patrz layout/theme.liquid).
+
+  Accepts:
+  - collection: {Object} bieżąca kolekcja
+
+  Usage:
+  {% render 'collection-model-pair', collection: collection %}
+{% endcomment %}
+{%- liquid
+  assign kng_handle = collection.handle
+  assign kng_prefix5 = kng_handle | slice: 0, 5
+  assign kng_prefix6 = kng_handle | slice: 0, 6
+  assign kng_pair_handle = blank
+
+  if kng_prefix5 == 'etui-'
+    assign kng_pair_handle = kng_handle | remove_first: 'etui-' | prepend: 'szkla-'
+  elsif kng_prefix6 == 'szkla-'
+    assign kng_pair_handle = kng_handle | remove_first: 'szkla-' | prepend: 'etui-'
+  endif
+
+  if kng_pair_handle != blank
+    assign kng_pair = collections[kng_pair_handle]
+  endif
+-%}
+{%- if kng_pair != blank and kng_pair.handle == kng_pair_handle and kng_pair.all_products_count >= 3 and kng_pair.metafields.seo.hidden.value != 1 -%}
+  <p class="collection-model-pair">
+    <a href="{{ kng_pair.url }}" class="collection-model-pair__link">
+      {{- kng_pair.title | escape -}}
+    </a>
+  </p>
+{%- endif -%}
