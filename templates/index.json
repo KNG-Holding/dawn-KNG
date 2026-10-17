@@ -406,6 +406,36 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "about": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Akcesoria GSM do Twojego telefonu",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>KNG-Mobile to sklep internetowy z akcesoriami GSM. Znajdziesz u nas <a href=\"/collections/etui-na-telefon\" title=\"Etui na telefon\">etui na telefon</a>, <a href=\"/collections/szkla-i-folie-ochronne\" title=\"Szkła i folie ochronne\">szkła i folie ochronne</a>, <a href=\"/collections/ladowarki-do-telefonu\" title=\"Ładowarki do telefonu\">ładowarki</a>, <a href=\"/collections/kable-usb\" title=\"Kable USB\">kable USB</a>, <a href=\"/collections/powerbanki-do-telefonu\" title=\"Powerbanki\">powerbanki</a> i <a href=\"/collections/uchwyty-do-telefonu\" title=\"Uchwyty do telefonu\">uchwyty do telefonu</a> – do iPhone’ów, Samsungów, Xiaomi i wielu innych modeli.</p><p>Stawiamy na sprawdzone marki, takie jak Spigen, Tech-Protect, Baseus, 3mk Protection, Ugreen i Ringke. Dzięki temu łatwo dobierzesz ochronę i zasilanie do swojego telefonu, niezależnie od tego, czy szukasz cienkiego etui, szkła hartowanego na cały ekran, czy szybkiej ładowarki USB-C.</p><p>Zamówienia wysyłamy w 2–4 dni robocze do Paczkomatów InPost lub kurierem. Za zakupy zapłacisz BLIK-iem i innymi bezpiecznymi metodami płatności, a jeśli produkt nie spełni Twoich oczekiwań, masz 14 dni na zwrot bez podawania przyczyny. Szczegóły znajdziesz w zakładkach <a href=\"/policies/shipping-policy\" title=\"Dostawa\">Dostawa</a> i <a href=\"/policies/refund-policy\" title=\"Zwroty\">Zwroty</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
     }
   },
   "order": [
@@ -416,6 +446,7 @@
     "models",
     "featured_collection",
     "brands",
-    "deals"
+    "deals",
+    "about"
   ]
 }
