@@ -1479,10 +1479,18 @@
         "content": "Dostawa w Polsce"
       },
       {
-        "type": "number",
-        "id": "kng_shipping_rate",
-        "label": "Koszt najtańszej dostawy (PLN)",
-        "default": 20
+        "type": "text",
+        "id": "kng_shipping_rate_locker",
+        "label": "Koszt dostawy – Paczkomat InPost (PLN)",
+        "info": "Np. 10.99. Musi zgadzać się ze stawką w Ustawieniach → Wysyłka i dostawa.",
+        "default": "10.99"
+      },
+      {
+        "type": "text",
+        "id": "kng_shipping_rate_courier",
+        "label": "Koszt dostawy – kurier (PLN)",
+        "info": "Np. 14.99. Zostaw puste, jeśli nie ma dostawy kurierem.",
+        "default": "14.99"
       },
       {
         "type": "number",

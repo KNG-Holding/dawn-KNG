@@ -12,7 +12,8 @@
 {% endcomment %}
 {%- liquid
   assign kng_currency = cart.currency.iso_code
-  assign kng_rate = settings.kng_shipping_rate | default: 20
+  assign kng_rate_locker = settings.kng_shipping_rate_locker | replace: ',', '.' | strip
+  assign kng_rate_courier = settings.kng_shipping_rate_courier | replace: ',', '.' | strip
   assign kng_free_from = settings.kng_free_shipping_threshold | default: 200
   assign kng_free_from_cents = kng_free_from | times: 100
   assign kng_handling_max = settings.kng_handling_days_max | default: 1
@@ -48,9 +49,9 @@
     "offers": [
       {%- for variant in product.variants -%}
         {%- liquid
-          assign kng_variant_rate = kng_rate
+          assign kng_variant_free = false
           if kng_free_from > 0 and variant.price >= kng_free_from_cents
-            assign kng_variant_rate = 0
+            assign kng_variant_free = true
           endif
         -%}
         {
@@ -69,20 +70,44 @@
           "priceCurrency": {{ kng_currency | json }},
           "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
           "itemCondition": "https://schema.org/NewCondition",
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": {{ kng_variant_rate | json }},
-              "currency": {{ kng_currency | json }}
-            },
-            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "PL" },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": {{ kng_handling_max | json }}, "unitCode": "DAY" },
-              "transitTime": { "@type": "QuantitativeValue", "minValue": {{ kng_transit_min | json }}, "maxValue": {{ kng_transit_max | json }}, "unitCode": "DAY" }
-            }
-          },
+          "shippingDetails": [
+            {%- for kng_option in (1..2) -%}
+              {%- liquid
+                if kng_option == 1
+                  assign kng_option_rate = kng_rate_locker
+                  assign kng_option_label = 'Paczkomat InPost'
+                else
+                  assign kng_option_rate = kng_rate_courier
+                  assign kng_option_label = 'Kurier'
+                endif
+                assign kng_option_enabled = false
+                if kng_option_rate != blank
+                  assign kng_option_enabled = true
+                endif
+                if kng_variant_free
+                  assign kng_option_rate = 0
+                endif
+              -%}
+              {%- if kng_option_enabled -%}
+                {%- if kng_option == 2 and kng_rate_locker != blank %},{% endif %}
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": {{ kng_option_label | json }},
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": {{ kng_option_rate | times: 1.0 | json }},
+                    "currency": {{ kng_currency | json }}
+                  },
+                  "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "PL" },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": {{ kng_handling_max | json }}, "unitCode": "DAY" },
+                    "transitTime": { "@type": "QuantitativeValue", "minValue": {{ kng_transit_min | json }}, "maxValue": {{ kng_transit_max | json }}, "unitCode": "DAY" }
+                  }
+                }
+              {%- endif -%}
+            {%- endfor %}
+          ],
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
             "applicableCountry": "PL",
