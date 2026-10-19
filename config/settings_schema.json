@@ -1466,5 +1466,75 @@
         "label": "t:settings_schema.customer_accounts.settings.customer_account_menu.label"
       }
     ]
+  },
+  {
+    "name": "Dane strukturalne (Google)",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Wartości trafiają do danych strukturalnych produktu (JSON-LD) dla Google: koszt i czas dostawy oraz zasady zwrotu. Powinny zgadzać się z ustawieniami wysyłki w Shopify i regulaminem."
+      },
+      {
+        "type": "header",
+        "content": "Dostawa w Polsce"
+      },
+      {
+        "type": "number",
+        "id": "kng_shipping_rate",
+        "label": "Koszt najtańszej dostawy (PLN)",
+        "default": 20
+      },
+      {
+        "type": "number",
+        "id": "kng_free_shipping_threshold",
+        "label": "Darmowa dostawa od kwoty (PLN)",
+        "info": "0 = brak darmowej dostawy.",
+        "default": 200
+      },
+      {
+        "type": "number",
+        "id": "kng_handling_days_max",
+        "label": "Czas przygotowania zamówienia – maks. dni",
+        "default": 1
+      },
+      {
+        "type": "number",
+        "id": "kng_transit_days_min",
+        "label": "Czas dostawy – min. dni robocze",
+        "default": 2
+      },
+      {
+        "type": "number",
+        "id": "kng_transit_days_max",
+        "label": "Czas dostawy – maks. dni robocze",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "Zwroty"
+      },
+      {
+        "type": "number",
+        "id": "kng_return_days",
+        "label": "Liczba dni na zwrot",
+        "default": 14
+      },
+      {
+        "type": "select",
+        "id": "kng_return_fees",
+        "label": "Koszt odesłania zwrotu",
+        "default": "ReturnFeesCustomerResponsibility",
+        "options": [
+          {
+            "value": "ReturnFeesCustomerResponsibility",
+            "label": "Płaci kupujący"
+          },
+          {
+            "value": "FreeReturn",
+            "label": "Darmowy zwrot"
+          }
+        ]
+      }
+    ]
   }
 ]
