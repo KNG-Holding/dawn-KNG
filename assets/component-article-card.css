@@ -140,3 +140,9 @@
     }
   }
 }
+
+/* KNG: zdjęcia produktów na liście wpisów bloga – całe, bez przycinania */
+.blog-articles .article-card .card__media img {
+  object-fit: contain;
+  background: #fff;
+}
