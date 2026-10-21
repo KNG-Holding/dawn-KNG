@@ -1,0 +1,126 @@
+{% comment %}
+  Dane strukturalne Product (JSON-LD) z ofertą dla każdego wariantu,
+  kosztem i czasem dostawy w Polsce (shippingDetails) oraz zasadami zwrotu
+  (hasMerchantReturnPolicy). Wartości pochodzą z ustawień motywu
+  „Dane strukturalne (Google)”.
+
+  Accepts:
+  - product: {Object} produkt
+
+  Usage:
+  {% render 'product-structured-data', product: product %}
+{% endcomment %}
+{%- liquid
+  assign kng_currency = cart.currency.iso_code
+  assign kng_rate_locker = settings.kng_shipping_rate_locker | replace: ',', '.' | strip
+  assign kng_rate_courier = settings.kng_shipping_rate_courier | replace: ',', '.' | strip
+  assign kng_free_from = settings.kng_free_shipping_threshold | default: 200
+  assign kng_free_from_cents = kng_free_from | times: 100
+  assign kng_handling_max = settings.kng_handling_days_max | default: 1
+  assign kng_transit_min = settings.kng_transit_days_min | default: 2
+  assign kng_transit_max = settings.kng_transit_days_max | default: 4
+  assign kng_return_days = settings.kng_return_days | default: 14
+  assign kng_return_fees = settings.kng_return_fees | default: 'ReturnFeesCustomerResponsibility'
+  assign kng_description = product.description | replace: '<', ' <' | strip_html | strip_newlines | split: ' ' | join: ' ' | strip | truncate: 5000
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": {{ request.origin | append: product.url | append: '#product' | json }},
+    "name": {{ product.title | json }},
+    "url": {{ request.origin | append: product.url | json }},
+    {%- if kng_description != blank %}
+      "description": {{ kng_description | json }},
+    {%- endif %}
+    {%- if product.vendor != blank %}
+      "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+    {%- endif %}
+    {%- if product.images.size > 0 %}
+      "image": [
+        {%- for image in product.images limit: 5 -%}
+          {{ image | image_url: width: 1200 | prepend: 'https:' | json }}{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ],
+    {%- endif %}
+    {%- if product.selected_or_first_available_variant.sku != blank %}
+      "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    {%- endif %}
+    "offers": [
+      {%- for variant in product.variants -%}
+        {%- liquid
+          assign kng_variant_free = false
+          if kng_free_from > 0 and variant.price >= kng_free_from_cents
+            assign kng_variant_free = true
+          endif
+        -%}
+        {
+          "@type": "Offer",
+          "url": {{ request.origin | append: variant.url | json }},
+          {%- if product.variants.size > 1 %}
+            "name": {{ variant.title | json }},
+          {%- endif %}
+          {%- if variant.sku != blank %}
+            "sku": {{ variant.sku | json }},
+          {%- endif %}
+          {%- if variant.barcode != blank %}
+            "gtin": {{ variant.barcode | json }},
+          {%- endif %}
+          "price": {{ variant.price | divided_by: 100.0 | json }},
+          "priceCurrency": {{ kng_currency | json }},
+          "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "itemCondition": "https://schema.org/NewCondition",
+          "shippingDetails": [
+            {%- for kng_option in (1..2) -%}
+              {%- liquid
+                if kng_option == 1
+                  assign kng_option_rate = kng_rate_locker
+                  assign kng_option_label = 'Paczkomat InPost'
+                else
+                  assign kng_option_rate = kng_rate_courier
+                  assign kng_option_label = 'Kurier'
+                endif
+                assign kng_option_enabled = false
+                if kng_option_rate != blank
+                  assign kng_option_enabled = true
+                endif
+                if kng_variant_free
+                  assign kng_option_rate = 0
+                endif
+              -%}
+              {%- if kng_option_enabled -%}
+                {%- if kng_option == 2 and kng_rate_locker != blank %},{% endif %}
+                {
+                  "@type": "OfferShippingDetails",
+                  "shippingLabel": {{ kng_option_label | json }},
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": {{ kng_option_rate | times: 1.0 | json }},
+                    "currency": {{ kng_currency | json }}
+                  },
+                  "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "PL" },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": {{ kng_handling_max | json }}, "unitCode": "DAY" },
+                    "transitTime": { "@type": "QuantitativeValue", "minValue": {{ kng_transit_min | json }}, "maxValue": {{ kng_transit_max | json }}, "unitCode": "DAY" }
+                  }
+                }
+              {%- endif -%}
+            {%- endfor %}
+          ],
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "PL",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": {{ kng_return_days | json }},
+            "returnMethod": "https://schema.org/ReturnByMail",
+            {%- if shop.refund_policy != blank %}
+              "merchantReturnLink": {{ request.origin | append: shop.refund_policy.url | json }},
+            {%- endif %}
+            "returnFees": "https://schema.org/{{ kng_return_fees }}"
+          }
+        }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ]
+  }
+</script>
