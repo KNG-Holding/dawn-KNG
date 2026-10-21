@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "cart-items": {
@@ -10,31 +19,50 @@
     },
     "cart-footer": {
       "type": "main-cart-footer",
-      "settings": {
-        "color_scheme": "scheme-1",
-        "padding_top": 20,
-        "padding_bottom": 40
-      },
       "blocks": {
         "subtotal": {
           "type": "subtotal",
-          "settings": {
-          }
+          "settings": {}
         },
         "buttons": {
           "type": "buttons",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
         "subtotal",
         "buttons"
-      ]
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
+    },
+    "1792613271ca7ad669": {
+      "type": "apps",
+      "blocks": {
+        "dpd_polska_map_cart_widget_UNn6zG": {
+          "type": "shopify://apps/dpd-polska/blocks/map_cart_widget/d91d0f82-3322-41da-94e0-ffe3ec164b78",
+          "settings": {
+            "country_selector_text": "Wybierz kraj wysyłki:",
+            "opening_button_text": "Wybierz punkt DPD Pickup",
+            "additional_info_text": "Jeżeli chcesz wybrać inny sposób dostawy niż do punktu DPD Pickup, pomiń ten krok i wybierz preferowaną metodę wysyłki na stronie finalizacji zamówienia.",
+            "widget_background": "#FAFAFA"
+          }
+        }
+      },
+      "block_order": [
+        "dpd_polska_map_cart_widget_UNn6zG"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "cart-items",
-    "cart-footer"
+    "cart-footer",
+    "1792613271ca7ad669"
   ]
 }
